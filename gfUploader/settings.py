@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0*w@^^10g^@140agrmu9#^z$folkn2$-u(h+k%mlwc0*5mswz^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'gfuploader-production.up.railway.app']
 
 
 # Application definition
