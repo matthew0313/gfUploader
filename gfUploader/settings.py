@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'gfuploader-production.up.railway.app']
 
+CSRF_TRUSTED_ORIGINS = [ 'gfuploader-production.up.railway.app' ]
 
 # Application definition
 
