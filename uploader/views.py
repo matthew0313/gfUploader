@@ -5,10 +5,17 @@ from .models import SaveFile
 from .serializers import SaveFileSerializer
 
 @api_view(['GET', 'POST', 'DELETE'])
-def uploaderAPI(request, username=None, fileName=None):
+def uploaderAPI(request, username=None, fileName=None, gameID=None):
 
     if request.method == 'GET':
-        if username and fileName:
+        if username and fileName and gameID:
+            try:
+                file = SaveFile.objects.get(username=username, fileName=fileName, gameID=gameID)
+                serializer = SaveFileSerializer(file)
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            except SaveFile.DoesNotExist:
+                return Response({"error": "File not found"}, status=status.HTTP_404_NOT_FOUND)
+        elif username and fileName:
             try:
                 file = SaveFile.objects.get(username=username, fileName=fileName)
                 serializer = SaveFileSerializer(file)
@@ -44,7 +51,7 @@ def uploaderAPI(request, username=None, fileName=None):
 
     if request.method == 'DELETE':
         try:
-            file = SaveFile.objects.get(username=username, fileName=fileName)
+            file = SaveFile.objects.get(username=username, fileName=fileName, gameID=gameID)
             file.delete()
             return Response({"status": "deleted"}, status=status.HTTP_200_OK)
         except SaveFile.DoesNotExist:
