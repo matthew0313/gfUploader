@@ -14,7 +14,7 @@ def uploaderAPI(request, username=None, fileName=None, gameID=None):
                 serializer = SaveFileSerializer(file)
                 return Response(serializer.data, status=status.HTTP_200_OK)
             except SaveFile.DoesNotExist:
-                return Response({"error": "File not found"}, status=status.HTTP_404_NOT_FOUND)
+                return Response(status=status.HTTP_204_NO_CONTENT)
         elif username and fileName:
             try:
                 file = SaveFile.objects.get(username=username, fileName=fileName)
@@ -55,4 +55,4 @@ def uploaderAPI(request, username=None, fileName=None, gameID=None):
             file.delete()
             return Response({"status": "deleted"}, status=status.HTTP_200_OK)
         except SaveFile.DoesNotExist:
-            return Response({"error": "File not found"}, status=status.HTTP_404_NOT_FOUND)
+            return Response(status=status.HTTP_204_NO_CONTENT)
