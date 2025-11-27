@@ -5,7 +5,7 @@ from .models import SaveFile
 from .serializers import SaveFileSerializer
 
 @api_view(['GET', 'POST', 'DELETE'])
-def uploaderAPI(request, username=None, fileName=None, gameID=None):
+def uploaderAPI(request, username=None, gameID=None, fileName=None):
 
     if request.method == 'GET':
         if username and fileName and gameID:
