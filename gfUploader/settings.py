@@ -21,7 +21,7 @@ ALLOWED_HOSTS = [
 # Next.js에서 요청 가능하도록 CSRF 허용
 CSRF_TRUSTED_ORIGINS = [
     'https://gfuploader-production.up.railway.app',
-    'https://hhub-production.up.railway.app/all-users',
+    'https://hhub-production.up.railway.app',
     'http://localhost:3000'
 ]
 
@@ -54,6 +54,7 @@ MIDDLEWARE = [
 # CORS 허용 Origin 리스트 (Next.js / localhost)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    'https://hhub-production.up.railway.app',
     "https://gfuploader-production.up.railway.app"
 ]
 
