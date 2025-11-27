@@ -21,7 +21,7 @@ ALLOWED_HOSTS = [
 # Next.js에서 요청 가능하도록 CSRF 허용
 CSRF_TRUSTED_ORIGINS = [
     'https://gfuploader-production.up.railway.app',
-    'https://hhub-production.up.railway.app'
+    'https://hhub-production.up.railway.app/all-users',
     'http://localhost:3000'
 ]
 
