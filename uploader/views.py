@@ -22,6 +22,10 @@ def uploaderAPI(request, username=None, gameID=None, fileName=None):
                 return Response(serializer.data, status=status.HTTP_200_OK)
             except SaveFile.DoesNotExist:
                 return Response({"error": "File not found"}, status=status.HTTP_404_NOT_FOUND)
+        elif username and gameID:
+            files = SaveFile.objects.filter(username=username, gameID=gameID)
+            serializer = SaveFileSerializer(files, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
         elif username:
             files = SaveFile.objects.filter(username=username)
             serializer = SaveFileSerializer(files, many=True)
