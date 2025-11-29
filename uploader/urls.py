@@ -20,7 +20,6 @@ from .views import uploaderAPI
 urlpatterns = [
     path('<str:username>/<str:gameID>/<str:fileName>', uploaderAPI),
     path('<str:username>/<str:gameID>/', uploaderAPI),
-    path('<str:username>/<str:fileName>/', uploaderAPI),
     path('<str:username>/', uploaderAPI),
     path('', uploaderAPI),
 ]
